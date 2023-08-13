@@ -50,7 +50,7 @@ class HBNBCommand(cmd.Cmd):
         """ Get the instance key in storage """
         return "{}.{}".format(str(class_name), instance_id)
 
-    def create_ins(self, arg):
+    def do_create(self, arg):
         """ Create a new instance of a class """
         args = arg.split()
         if len(args) == 0:
@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def show_ins(self, arg):
+    def do_show(self, arg):
         """ Print string representation of an instance """
         args = shlex.split(arg)
         if len(args) == 0:
@@ -86,12 +86,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
 
-    def all_ins(self, args):
+    def do_all(self, args):
         """Prints string representations of instances"""
         args = _parse_key_value_args(args)
         if len(args) == 0:
            instances = [str(obj) for obj in storage.all().values()]
-        elif args[0] in HBNBCommand.__classes:
+        elif args[0] in CLASSES:
              instances = [str(obj) for obj in storage.all().values() if obj.__class__.__name__ == args[0]]
         else:
             print("** class doesn't exist **")
@@ -100,12 +100,12 @@ class HBNBCommand(cmd.Cmd):
         print(", ".join(instances), end="")
         print("]")
 
-    def update_ins(self, arg):
+    def do_update(self, arg):
         """Update an instance based on the class name, id, attribute & value"""
         args = parse(arg)
         if len(args) == 0:
            print("** class name missing **")
-        elif args[0] in HBNBCommand.__classes:
+        elif args[0] in CLASSES:
              if len(args) > 1:
                 k = args[0] + "." + args[1]
                 if k in storage.all().values():
@@ -130,12 +130,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
 
-    def destroy_ins(self, arg):
+    def do_destroy(self, arg):
         """Deletes an instance based on the class and id"""
         args = parse(arg)
         if len(args) == 0:
            print("** class name missing **")
-        elif args[0] in HBNBCommand.__classes:
+        elif args[0] in CLASSES:
            if len(args) > 1:
               k = args[0] + "." + args[1]
               if k in storage.all().values():
