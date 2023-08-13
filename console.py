@@ -54,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
 
-    def initial(self, arg):
+    def default(self, arg):
         """Defined default behaviors"""
         argdict = {
             "all": self.do_all,
