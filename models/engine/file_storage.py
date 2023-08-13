@@ -42,8 +42,6 @@ class FileStorage:
         """deserializes the JSON file If the file doesn’t exist, no exception
         should be raised"""
         try:
-            if os.path.getsize(FileStorage.__file_path) == 0:
-                return
             with open(FileStorage.__file_path, "r") as f:
                 objdict = json.load(f)
 
@@ -51,5 +49,5 @@ class FileStorage:
                     cls_name = objects["__class__"]
                     objects.pop("__class__")
                     self.new(eval(cls_name)(**objects))
-        except (FileNotFoundError, json.JSONDecodeError):
+        except (FileNotFoundError):
             return
