@@ -23,6 +23,7 @@ CLASSES = {
     "User": User
 }
 
+
 def _parse_key_value_args(arg):
     cBraces = re.search(r"\{(.*?)\}", arg)
     sBrackets = re.search(r"\[(.*?)\]", arg)
@@ -53,7 +54,6 @@ class HBNBCommand(cmd.Cmd):
         """ignore on empty line"""
         pass
 
-
     def default(self, arg):
         """Defined default behaviors"""
         argdict = {
@@ -75,7 +75,6 @@ class HBNBCommand(cmd.Cmd):
         print("*** Unknown syntax: {}".format(arg))
         return False
 
-
     def do_all(self, arg):
         """KnowledgeBase: all or all <class> or <class>.all()
         returns a string rep of all instances of given class.
@@ -91,8 +90,6 @@ class HBNBCommand(cmd.Cmd):
                 elif len(argl) == 0:
                     objl.append(o.__str__())
             print(objl)
-
-
 
     def do_show(self, arg):
         """KnowledgeBase: show <class> <id> or <class>.show(<id>)
@@ -111,8 +108,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(objDict["{}.{}".format(argl[0], argl[1])])
 
-
-
     def do_create(self, arg):
         """KnowledgeBase: create <class>
         Initiates a new class instance and print its id.
@@ -126,7 +121,6 @@ class HBNBCommand(cmd.Cmd):
             print(eval(argl[0])().id)
             storage.save()
 
-
     def do_count(self, arg):
         """KnowledgeBase: count <class> or <class>.count()
         number of instances of a given class."""
@@ -137,9 +131,9 @@ class HBNBCommand(cmd.Cmd):
                 count += 1
         print(count)
 
-
     def do_update(self, arg):
-        """KnowledgeBase: update <class> <id> <attribute_name> <attribute_value> or
+        """KnowledgeBase: update <class> <id> <attribute_name>
+        <attribute_value> or
        <class>.update(<id>, <attribute_name>, <attribute_value>) or
        <class>.update(<id>, <dictionary>)
         This updates a class instance of a given id by adding or updating
@@ -187,7 +181,6 @@ class HBNBCommand(cmd.Cmd):
                     o.__dict__[i] = v
         storage.save()
 
-
     def do_destroy(self, arg):
         """KnowledgeBase: destroy <class> <id> or <class>.destroy(<id>)
         This deletes a class instance of a given id."""
@@ -205,7 +198,6 @@ class HBNBCommand(cmd.Cmd):
             del objDict["{}.{}".format(argl[0], argl[1])]
             storage.save()
 
-
     def do_quit(self, arg):
         """Quit command to exit the program."""
         return True
@@ -215,7 +207,6 @@ class HBNBCommand(cmd.Cmd):
         print("")
         return True
 
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
-
-
