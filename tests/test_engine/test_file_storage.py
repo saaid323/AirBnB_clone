@@ -26,23 +26,26 @@ class TestFileStorage(unittest.TestCase):
         except FileNotFoundError:
             pass
 
-    def test_all(self):
+    def test_all_empty(self):
+        all_objects = storage.all()
+        self.assertEqual(len(all_objects), 0)
 
+    def test_new(self):
         base_model = BaseModel()
-        user = User()
         storage.new(base_model)
-        storage.new(user)
         all_objects = storage.all()
         self.assertIn(base_model, all_objects.values())
-        self.assertIn(user, all_objects.values())
 
     def test_save_reload(self):
         base_model = BaseModel()
         user = User()
+        
         storage.new(base_model)
         storage.new(user)
+
         storage.save()
         storage.reload()
+
         reloaded_objects = storage.all()
         self.assertIn(base_model, reloaded_objects.values())
         self.assertIn(user, reloaded_objects.values())
@@ -50,13 +53,25 @@ class TestFileStorage(unittest.TestCase):
     def test_save_file_content(self):
         base_model = BaseModel()
         user = User()
+
         storage.new(base_model)
         storage.new(user)
+
         storage.save()
+
         with open(self.TEST_JSON_FILE, "r") as f:
             data = json.load(f)
+
         self.assertIn(f"BaseModel.{base_model.id}", data)
         self.assertIn(f"User.{user.id}", data)
+
+    def test_reload_missing_file(self):
+        try:
+            os.remove(self.TEST_JSON_FILE)
+        except FileNotFoundError:
+            pass
+
+        storage.reload()
 
 
 if __name__ == '__main__':
