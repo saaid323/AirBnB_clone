@@ -13,6 +13,7 @@ from models.amenity import Amenity
 from models.review import Review
 
 # Dictionary to map class names to classes
+
 CLASSES = {
     "Amenity": Amenity,
     "BaseModel": BaseModel,
