@@ -1,8 +1,14 @@
 {
     "BaseModel.b3f3c5a9-d1bf-4248-98eb-978e0b54a274": {
-        "id": "b3f3c5a9-d1bf-4248-98eb-978e0b54a274",
         "created_at": "2023-08-13T18:02:17.212988",
-        "updated_at": "2023-08-13T18:02:17.212988",
-        "__class__": "BaseModel"
+        "__class__": "BaseModel",
+        "id": "b3f3c5a9-d1bf-4248-98eb-978e0b54a274",
+        "updated_at": "2023-08-13T18:02:17.212988"
+    },
+    "User.00ab9eb6-e97e-4d3d-b074-4818e0cbfbf1": {
+        "created_at": "2023-08-13T18:06:29.292611",
+        "__class__": "User",
+        "id": "00ab9eb6-e97e-4d3d-b074-4818e0cbfbf1",
+        "updated_at": "2023-08-13T18:06:29.292611"
     }
 }
