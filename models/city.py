@@ -4,11 +4,10 @@ from models.base_model import BaseModel
 
 
 class City(BaseModel):
-	"""This constitutes a obj.
-	Attr:
-		state_id: state ID.
-		name: city name.
-	"""
-
-	state_id = ""
-	name = ""
+    """This constitutes a obj.
+    Attr:
+    state_id: state ID.
+    name: city name.
+    """
+    state_id = ""
+    name = ""
