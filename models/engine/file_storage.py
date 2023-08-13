@@ -34,13 +34,6 @@ class FileStorage:
         data = {}
         for obj in FileStorage.__objects.keys():
             data[obj] = FileStorage.__objects[obj].to_dict()
-        try:
-            with open(FileStorage.__file_path, mode="r") as f:
-                existing_data = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
-            existing_data = {}
-
-        data.update(existing_data)
 
         with open(FileStorage.__file_path, mode="w+") as f:
             json.dump(data, f, indent=4)
