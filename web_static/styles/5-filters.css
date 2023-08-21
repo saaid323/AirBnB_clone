@@ -6,11 +6,10 @@
     border-radius: 4px;
 }
 
-.locations,
-.amenities{
+.filters div{
     height: 100%;
     width: 25%;
-    padding: 0 10px;
+    text-align: center;
     display: inline-block;
 }
 
@@ -20,11 +19,11 @@
 
 
 .filters div h3{
-    font-weight: 600px;
+    font-weight: 600;
 }
 
 .filters div h3 h4{
-    font-weight: 400px;
+    font-weight: 400;
     font-size: 14px;
 }
 
@@ -44,24 +43,4 @@ section button{
 button:hover{
     opacity: 90%;
 }
-
-.popover{
-    list-style: none;
-    width: 16%;
-    background-color: #FAFAFA;
-    border: #DDDDDD solid 1px;
-    border: radius 4px;
-    position: absolute;
-    display: none;
-}
-
-.locations:hover .popover, .amenities:hover .popover{
-    display: block;
-}
-
-
-.popover li {
-    padding: 8px 12px;
-}
-
 
